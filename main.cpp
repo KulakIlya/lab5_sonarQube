@@ -289,9 +289,7 @@ void  list()
 
   system("cls");
 
-  int i=num;
-
-  num+=1;
+  int i=++num;  
 
  // highvideo();
 
