@@ -289,7 +289,9 @@ void  list()
 
   system("cls");
 
-  int i=++num;  
+  int i=num;
+
+  num+=1;
 
  // highvideo();
 
@@ -332,92 +334,37 @@ void  list()
 
 
 
-  void deletes()
+  void deletes() {
+    system("cls");
+    int code;
+    int check = -1; // Initialize to "not found"
+    printf("Delete An Entry\n");
+    cout << "Enter Job Code to Delete That Entry: ";
+    cin >> code;
 
-  {
-
-   system("cls");
-
-  // highvideo();
-
-   int code;
-
-   int check;
-
-   printf("Delete An Entry");
-
-   //normvideo();
-
-   cout<<endl;
-
-   cout<<"Enter An JobCode To Delete That Entry  ";
-
-   cin>>code;
-
-   int i;
-
-   for(i=0;i<=num-1;i++)
-
-   {
-
-    if(emp[i].code==code)
-
-    {
-
-      check=i;
-
+    // Find the index of the entry to delete
+    for (int i = 0; i < num; i++) {
+        if (emp[i].code == code) {
+            check = i;
+            break;
+        }
     }
 
-   }
-
-   for(i=0;i<=num-1;i++)
-
-   {
-
-    if(i==check)
-
-    {
-
-    continue;
-
+    if (check == -1) {
+        cout << "Entry not found!\n";
+        getch();
+        return;
     }
 
-    else
-
-    {
-
-    if(i>check)
-
-    {
-
-     tempemp[i-1]=emp[i];
-
+    // Shift entries to remove the deleted one
+    for (int i = check; i < num - 1; i++) {
+        emp[i] = emp[i + 1];
     }
 
-    else
-
-    {
-
-     tempemp[i]=emp[i];
-
-    }
-
-     }
-
-   }
-
-  num--;
-
-
-  for(i=0;i<=num-1;i++)
-
-  {
-
-   emp[i]=tempemp[i];
-
-  }
-
- }
+    num--; // Decrease the count
+    cout << "Entry deleted successfully!\n";
+    Sleep(500);
+}
 
 
 void edit()
